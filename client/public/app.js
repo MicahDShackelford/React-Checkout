@@ -1,13 +1,21 @@
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      currentPage: "ShippingInformation"
+    };
   }
 
   render() {
-    return React.createElement("div", {
-      id: "checkout-container"
-    }, React.createElement(AccountCreation, null), React.createElement(Cart, null));
+    if (this.state.currentPage === "AccountCreation") {
+      return React.createElement("div", {
+        id: "checkout-container"
+      }, React.createElement(AccountCreation, null), React.createElement(Cart, null));
+    } else if (this.state.currentPage === "ShippingInformation") {
+      return React.createElement("div", {
+        id: "checkout-container"
+      }, React.createElement(ShippingInformation, null), React.createElement(Cart, null));
+    }
   }
 
 }
@@ -20,12 +28,12 @@ let Cart = props => {
 
 let AccountCreation = props => {
   return React.createElement("div", {
-    id: "account-creation"
+    className: "page"
   }, React.createElement("div", {
     className: "modal"
   }, React.createElement("div", {
     className: "header"
-  }, React.createElement("h2", null, "Checkout"), React.createElement("p", null, React.createElement("a", {
+  }, React.createElement("h2", null, "Create Your Account"), React.createElement("p", null, React.createElement("a", {
     href: "#",
     className: "previous"
   }, "Cart"), " > ", React.createElement("a", {
@@ -44,30 +52,63 @@ let AccountCreation = props => {
     id: "last-name",
     placeholder: "Last Name"
   })), React.createElement("label", {
-    for: "email"
+    htmlFor: "email"
   }, "Email"), React.createElement("input", {
     type: "text",
     id: "email",
     placeholder: "Enter a Email here"
   }), React.createElement("label", {
-    for: "pass"
+    htmlFor: "pass"
   }, "Password"), React.createElement("input", {
-    type: "password",
+    type: "new-password",
     id: "pass",
     placeholder: "Enter a password here"
   }), React.createElement("label", {
-    for: "pass"
+    htmlFor: "passConf"
   }, "Confirm Password"), React.createElement("input", {
-    type: "password",
-    id: "pass",
+    type: "new-password",
+    id: "passConf",
     placeholder: "Enter a password here"
   }), React.createElement("div", {
     className: "checkbox"
   }, React.createElement("input", {
     type: "checkbox"
+  }), React.createElement("label", null, "I would like to paticipate in our mailing list (for special offers).")), React.createElement("div", {
+    className: "checkbox"
+  }, React.createElement("input", {
+    type: "checkbox"
   }), React.createElement("label", null, "I Agree to the ", React.createElement("a", {
     href: "#"
-  }, "Terms & Conditions"))))));
+  }, "Terms & Conditions"))), React.createElement("div", {
+    className: "bottom-nav"
+  }, React.createElement("button", null, React.createElement("i", {
+    className: "fas fa-arrow-circle-left"
+  }), " Cart"), React.createElement("button", null, "Shipping Information ", React.createElement("i", {
+    className: "fas fa-arrow-circle-right"
+  }))), React.createElement("p", {
+    className: "center"
+  }, "Or if you are already a member you can login ", React.createElement("a", {
+    href: "#"
+  }, "here"), "!"))));
+};
+
+let ShippingInformation = props => {
+  return React.createElement("div", {
+    className: "page"
+  }, React.createElement("div", {
+    className: "modal"
+  }, React.createElement("div", {
+    className: "header"
+  }, React.createElement("h2", null, "Checkout"), React.createElement("p", null, React.createElement("a", {
+    href: "#",
+    className: "previous"
+  }, "Cart"), " > ", React.createElement("a", {
+    href: "#",
+    className: "previous"
+  }, "Account Creation"), " > ", React.createElement("a", {
+    href: "#",
+    className: "active"
+  }, "Shipping Information"), " > ", React.createElement("a", null, "Payment")))));
 };
 
 ReactDOM.render(React.createElement(App, null), document.getElementById('root'));

@@ -3,6 +3,23 @@
   margin: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+button {
+  width: 100px;
+  height: 40px;
+  text-align: center;
+  background: #2a9dcc;
+  border: none;
+  border-radius: 5px;
+  margin: 0.5em;
+  color: #fff;
+}
+button:hover {
+  background: #217ca2;
+  cursor: pointer;
+}
+.center {
+  text-align: center;
+}
 #checkout-container {
   display:flex;
   flex-direction: row;
@@ -17,41 +34,41 @@
   display: flex;
   flex-direction: column;
 }
-#account-creation .header {
+.page .header {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-#account-creation .header p {
+.page .header p {
   font-size: 0.75em;
 }
-#account-creation .header a {
+.page .header a {
   text-decoration: none;
   color: #737373;
 }
-#account-creation .header .previous {
+.page .header .previous {
   color: #2a9dcc;
 }
-#account-creation .header .active {
+.page .header .active {
   color: #333333;
 }
-#account-creation {
+.page {
   flex: 3;
   display: flex;
   flex-direction: column;
 }
-#account-creation .modal {
+.page .modal {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
-#account-creation .account-creation-form {
+.page .account-creation-form {
   display:flex;
   flex-direction: column;
   width: 40vw;
 }
-#account-creation .account-creation-form input {
+.page .account-creation-form input {
   height: 3em;
   padding: 0 1em;
   margin-bottom: 1em;
@@ -59,7 +76,7 @@
 
   border: 1px solid rgba(0, 0, 0, 0.2);
 }
-#account-creation .account-creation-form input:focus {
+.page .account-creation-form input:focus {
   outline: none;
   border: 1px solid #2a9dcc;
 }
@@ -71,8 +88,24 @@
 .join-text input {
   flex:1;
 }
-#account-creation input {
+.page input {
   margin: 0 0.5em;
 }
 .checkbox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 2em;
+}
+.checkbox label {
+  font-size: 0.75em;
+}
+.checkbox input[type="checkbox"] {
+  position: relative;
+  top: 7px;
+  width: 15px;
+}
+.bottom-nav {
+  display: flex;
+  justify-content: center;
 }

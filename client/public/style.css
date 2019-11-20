@@ -1,0 +1,78 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+#checkout-container {
+  display:flex;
+  flex-direction: row;
+  min-height: -webkit-fill-available;
+}
+#cart {
+  flex:2;
+  background: #F7F7F2;
+  border-left: #8E8D8A 2px solid;
+  /* box-shadow: -5px 0px 5px #8E8D8A; */
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+}
+#account-creation .header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#account-creation .header p {
+  font-size: 0.75em;
+}
+#account-creation .header a {
+  text-decoration: none;
+  color: #737373;
+}
+#account-creation .header .previous {
+  color: #2a9dcc;
+}
+#account-creation .header .active {
+  color: #333333;
+}
+#account-creation {
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+}
+#account-creation .modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+#account-creation .account-creation-form {
+  display:flex;
+  flex-direction: column;
+  width: 40vw;
+}
+#account-creation .account-creation-form input {
+  height: 3em;
+  padding: 0 1em;
+  margin-bottom: 1em;
+  border-radius: 5px;
+
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+#account-creation .account-creation-form input:focus {
+  outline: none;
+  border: 1px solid #2a9dcc;
+}
+.join-text {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+.join-text input {
+  flex:1;
+}
+#account-creation input {
+  margin: 0 0.5em;
+}
+.checkbox {
+}

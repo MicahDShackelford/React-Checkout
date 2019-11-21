@@ -17,8 +17,17 @@ button:hover {
   background: #217ca2;
   cursor: pointer;
 }
+select {
+  background: #2a9dcc;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+}
 .center {
   text-align: center;
+}
+.center-div {
+  align-self: center;
 }
 #checkout-container {
   display:flex;
@@ -63,20 +72,19 @@ button:hover {
   align-items: center;
   justify-content: center;
 }
-.page .account-creation-form {
+.page .checkout-form {
   display:flex;
   flex-direction: column;
   width: 40vw;
 }
-.page .account-creation-form input {
-  height: 3em;
+.page .checkout-form input {
+  height: 40px;
   padding: 0 1em;
   margin-bottom: 1em;
   border-radius: 5px;
-
   border: 1px solid rgba(0, 0, 0, 0.2);
 }
-.page .account-creation-form input:focus {
+.page .checkout-form input:focus {
   outline: none;
   border: 1px solid #2a9dcc;
 }
@@ -108,4 +116,58 @@ button:hover {
 .bottom-nav {
   display: flex;
   justify-content: center;
+}
+.join-div {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+.join-div .join-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.join-item select {
+  height: 40px;
+  margin: 0 0.75em;
+}
+.checkout-form .card-number {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  width: 60%;
+  height: min-content;
+  padding: 0 10px;
+  background: #fff;
+}
+.checkout-form .card-number p {
+  font-size: 1.5em;
+}
+.checkout-form .card-number input {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  font-size: 2.25em;
+  border: none;
+}
+.checkout-form .card-number input:focus {
+  border: none;
+}
+.payment {
+  width: 400px;
+  background: #333;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  color: #fff;
+}
+.payment p {
+  color: #333;
 }

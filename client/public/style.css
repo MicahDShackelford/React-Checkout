@@ -171,3 +171,24 @@ select {
 .payment p {
   color: #333;
 }
+
+.confirm {
+  width: 500px;
+  border: 1px #333 solid;
+}
+.confirm li {
+  list-style: none;
+  width: 100%;
+  color: #fff;
+  background: #2a9dcc;
+}
+.confirm li:nth-child(odd) {
+  background: #217ca2;
+}
+.confirm .head {
+  font-size: 2em;
+  text-align: center;
+}
+.confirm .title {
+  font-weight: bold;
+}

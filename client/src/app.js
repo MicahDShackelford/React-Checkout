@@ -20,7 +20,7 @@ class App extends React.Component {
       resolve();
     })
       .then(() => {
-        console.log(this.state);
+        // console.log(this.state);
       })
   }
 
@@ -49,7 +49,7 @@ class App extends React.Component {
     }else if(this.state.currentPage === "Confirmation") {
       return (
         <div id="checkout-container">
-          <Confirmation user={this.props.user} shipping={this.props.shipping} payment={this.props.payment} />
+          <Confirmation user={this.state.user} shipping={this.state.shipping} payment={this.state.payment} />
           <Cart />
         </div>
       )
@@ -264,14 +264,38 @@ let PaymentInformation = (props) => {
   )
 }
 let Confirmation = (props) => {
+
+  let post = (obj) => {
+    fetch('http://127.0.0.1:3000/api/checkout', {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(obj)
+    });
+  }
+  post({user: props.user, shipping: props.shipping, payment: props.payment});
+
   return (
     <div className="page">
       <div className="modal">
         <div className="header">
           <h2>Confirmation</h2>
-          <p><a href="#" className="previous">Cart</a> > <a href="#" className="previous">Account Creation</a> > <a href="#" className="previous">Shipping Information</a> > <a href="#" className="previous">Payment</a> > <a className="active">Confirmation</a></p>
-
-
+          <p><a href="#" className="previous">Cart</a> > <a href="#" className="previous">Confirm your Information</a> > <a href="#" className="previous">Shipping Information</a> > <a href="#" className="previous">Payment</a> > <a className="active">Confirmation</a></p>
+          <div className="confirm">
+            <ul>
+              <li className="head">Account</li>
+              <li><span className="title">First Name:</span> <span className="content">{props.user.firstName}</span></li>
+              <li><span className="title">Last Name:</span> <span className="content">{props.user.lastName}</span></li>
+              <li><span className="title">Email:</span> <span className="content">{props.user.email}</span></li>
+              <li className="head">Shipping</li>
+              <li><span className="title">Address Line 1:</span> <span className="content">{props.shipping.lineOne}</span></li>
+              <li><span className="title">Address Line 2:</span> <span className="content">{props.shipping.lineTwo}</span></li>
+              <li><span className="title">State:</span> <span className="content">{props.shipping.state}</span></li>
+              <li><span className="title">City:</span> <span className="content">{props.shipping.city}</span></li>
+              <li><span className="title">Zip Code:</span> <span className="content">{props.shipping.zip}</span></li>
+              <li><span className="title">Phone Number:</span> <span className="content">{props.shipping.phoneNumber}</span></li>
+            </ul>
+          </div>
+          <a>Confirm</a>
         </div>
       </div>
     </div>

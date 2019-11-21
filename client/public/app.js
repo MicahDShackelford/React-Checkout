@@ -18,8 +18,7 @@ class App extends React.Component {
         [type]: setstate[type]
       });
       resolve();
-    }).then(() => {
-      console.log(this.state);
+    }).then(() => {// console.log(this.state);
     });
   }
 
@@ -49,9 +48,9 @@ class App extends React.Component {
       return React.createElement("div", {
         id: "checkout-container"
       }, React.createElement(Confirmation, {
-        user: this.props.user,
-        shipping: this.props.shipping,
-        payment: this.props.payment
+        user: this.state.user,
+        shipping: this.state.shipping,
+        payment: this.state.payment
       }), React.createElement(Cart, null));
     }
   }
@@ -394,6 +393,21 @@ let PaymentInformation = props => {
 };
 
 let Confirmation = props => {
+  let post = obj => {
+    fetch('http://127.0.0.1:3000/api/checkout', {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(obj)
+    });
+  };
+
+  post({
+    user: props.user,
+    shipping: props.shipping,
+    payment: props.payment
+  });
   return React.createElement("div", {
     className: "page"
   }, React.createElement("div", {
@@ -406,7 +420,7 @@ let Confirmation = props => {
   }, "Cart"), " > ", React.createElement("a", {
     href: "#",
     className: "previous"
-  }, "Account Creation"), " > ", React.createElement("a", {
+  }, "Confirm your Information"), " > ", React.createElement("a", {
     href: "#",
     className: "previous"
   }, "Shipping Information"), " > ", React.createElement("a", {
@@ -414,7 +428,49 @@ let Confirmation = props => {
     className: "previous"
   }, "Payment"), " > ", React.createElement("a", {
     className: "active"
-  }, "Confirmation")))));
+  }, "Confirmation")), React.createElement("div", {
+    className: "confirm"
+  }, React.createElement("ul", null, React.createElement("li", {
+    className: "head"
+  }, "Account"), React.createElement("li", null, React.createElement("span", {
+    className: "title"
+  }, "First Name:"), " ", React.createElement("span", {
+    className: "content"
+  }, props.user.firstName)), React.createElement("li", null, React.createElement("span", {
+    className: "title"
+  }, "Last Name:"), " ", React.createElement("span", {
+    className: "content"
+  }, props.user.lastName)), React.createElement("li", null, React.createElement("span", {
+    className: "title"
+  }, "Email:"), " ", React.createElement("span", {
+    className: "content"
+  }, props.user.email)), React.createElement("li", {
+    className: "head"
+  }, "Shipping"), React.createElement("li", null, React.createElement("span", {
+    className: "title"
+  }, "Address Line 1:"), " ", React.createElement("span", {
+    className: "content"
+  }, props.shipping.lineOne)), React.createElement("li", null, React.createElement("span", {
+    className: "title"
+  }, "Address Line 2:"), " ", React.createElement("span", {
+    className: "content"
+  }, props.shipping.lineTwo)), React.createElement("li", null, React.createElement("span", {
+    className: "title"
+  }, "State:"), " ", React.createElement("span", {
+    className: "content"
+  }, props.shipping.state)), React.createElement("li", null, React.createElement("span", {
+    className: "title"
+  }, "City:"), " ", React.createElement("span", {
+    className: "content"
+  }, props.shipping.city)), React.createElement("li", null, React.createElement("span", {
+    className: "title"
+  }, "Zip Code:"), " ", React.createElement("span", {
+    className: "content"
+  }, props.shipping.zip)), React.createElement("li", null, React.createElement("span", {
+    className: "title"
+  }, "Phone Number:"), " ", React.createElement("span", {
+    className: "content"
+  }, props.shipping.phoneNumber)))), React.createElement("a", null, "Confirm"))));
 };
 
 ReactDOM.render(React.createElement(App, null), document.getElementById('root'));
